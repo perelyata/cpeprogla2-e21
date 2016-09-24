@@ -31,10 +31,10 @@ int main() {
 		case 2:
 			pcase2();
 			break;
-		/*	
+			
 		case 3:
 			pcase3();
-			break;*/
+			break;
 			
 		default:
 			cout << "--- INVALID KEYWORD ---" << endl;
@@ -109,7 +109,7 @@ void pcase2(){
 	int x, i, j	;
 	float fgrade;
 		
-//structure declaration	for problem 1	
+//structure declaration	for problem 2	
 	struct record{
 		int id;
 		char name[30];
@@ -167,6 +167,116 @@ void pcase2(){
 		}
 		cout<<endl;
 }
+
+
+void pcase3(){
+	
+	int i, j, totalPrice;
+
+//structure declaration	for problem 3	
+	struct customer{
+		struct Name{
+		char givenName[20];
+		char lastName[20];
+		}name;
+	
+	struct Order{
+		int day;
+		int month;
+		int year;
+		int quantity;
+		
+		    struct Item{
+				int id;
+				char itemName[20];
+				int price;
+		};
+		
+	Item item[3];
+	}order;
+	
+	};
+
+	void newLine();
+
+	customer cons[3];
+	
+//input data
+	for (i=0;i<3;i++){
+		
+		cout << "\n \nCUSTOMER INFORMATION "<< i+1 <<endl;
+		cin.ignore();
+		cout << "First Name: ";
+		cin.getline(cons[i].name.givenName,25);
+		cout << "Last Name: ";
+		cin.getline(cons[i].name.lastName,25);
+		
+		
+		cout << "ORDER DATE: " << endl;
+		cout << "Day: ";
+		cin >> cons[i].order.day;
+		cout << "Month: ";
+		cin >> cons[i].order.month;
+		cout << "Year: ";
+		cin >> cons[i].order.year;
+		cout << "\nENTER 3 ITEMS: "<<endl;
+		
+		
+		for (j=0;j<3;j++){
+		    cout << "ID: ";
+		    cin >> cons[i].order.item[j].id;
+		    newLine();
+    	    cout<<"Name: ";
+    		cin.getline(cons[i].order.item[j].itemName,24);
+    		cout << "Price: ";
+    		cin >>cons[i].order.item[j].price;
+    		cout <<"Quantity: ";
+    		cin >>cons[i].order.quantity;
+    		cout <<endl;
+		}
+		newLine();
+}
+	j=0;
+	
+	
+//output data
+	cout << " -----------------"<< endl;
+	cout << "\tSUMMARY REPORT"<<endl;
+	cout << " -----------------"<< endl;
+	
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(2);
+	cout <<" #"<<setw(10)<<"Customer Name"
+		<<setw(10)<<"Order Date"
+		<<setw(10)<<"Items"
+		<<setw(10)<<"Price"
+		<<setw(10)<<"Quantity"<<endl;
+	
+	for (i=0;i<3;i++){
+	
+		totalPrice=0;
+		
+		cout <<" "<< i+1
+			<< setw(10)<<cons[i].name.lastName<<","
+			<< setw(2)<<cons[i].name.givenName
+			<< setw(10) <<cons[i].order.day 
+						<<"/"<<cons[i].order.month
+						<<"/"<<cons[i].order.year << endl;
+		
+    	for (j=0;j<3;j++){
+    		
+    		cout<<setw(40)<<cons[i].order.item[j].itemName	
+				<<setw(2)<<cons[i].order.item[j].price
+				<<setw(5)<<cons[i].order.quantity<<endl;
+			
+    		totalPrice += cons[i].order.item[j].price;
+		}
+		totalPrice = totalPrice * cons[i].order.quantity;
+		cout << setw(40) << "TOTAL PRICE: "<< totalPrice << endl;
+	}
+}
+
 	
 //FUNCTION FOR NEWLINE
 void newLine(){
