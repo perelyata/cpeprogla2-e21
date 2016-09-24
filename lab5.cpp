@@ -4,14 +4,11 @@
 #include <bits/stdc++.h>
 #include <stdlib.h>
 using namespace std;
-int flag=0, n=0, x=0, choices;
-char str1[75], str2[75], str[75], *pstr1, *pstr2, ans;
 
 // DECLARATION OF FUNCTIONS
 void pcase1();
 void pcase2();
 void pcase3();
-
 
 
 // MAIN FUNCTION
@@ -32,10 +29,9 @@ int main() {
 			break;
 			
 		case 2:
-			cout <<"wow";
-			/*pcase2();
+			pcase2();
 			break;
-			
+		/*	
 		case 3:
 			pcase3();
 			break;*/
@@ -50,13 +46,11 @@ int main() {
 	} while (ans =='Y' || ans == 'y');
 }
 
-//FUNCTION DEFINITIONS
-
 
 //FUNCTION FOR PROBLEM 1
 void pcase1(){
 
-//structure declaration	
+//structure declaration	for problem 1
 struct studname{
        char fullName[100];
 };
@@ -87,7 +81,7 @@ void newLine();
     
 //output data   
     cout << "\n\n";
-    cout << "Student recordordord\n";
+    cout << "Student record\n";
     cout << "ID: " << rec.id << endl;
     cout << "Name: " << rec.name.fullName << endl;
     for(int i=0; i<3; i++){
@@ -110,7 +104,70 @@ void newLine();
 
 
 
+void pcase2(){
+	
+	int x, i, j	;
+	float fgrade;
+		
+//structure declaration	for problem 1	
+	struct record{
+		int id;
+		char name[30];
+		struct studQuizzes {
+		float quiz;
+		};
+ 	studQuizzes quizzes[3];
+	};
 
+	void newLine();
+
+	record rec[5];
+	
+//input data
+	cout <<"--------------------------" << endl;	
+	cout<<"Enter 5 Student/s Record: " << endl;
+	cout <<"--------------------------" << endl;
+	
+	for (i=0; i<5; i++){
+		cout<<"\nStudent "<<(i+1)<< endl;
+		cout<<"ID: ";
+		cin>>rec[i].id;
+		newLine();
+		
+		cout<<"Name: ";
+		cin.getline(rec[i].name, 49);
+		
+		cout<<"Enter 3 quizze(s): ";
+		for(j=0;j<3;j++){	
+			cin>>rec[i].quizzes[j].quiz;	
+		}
+	}
+	
+//output data
+	cout << endl;
+	cout << setw(5) << "  ID No." << setw(15)<<"Student No" << setw(15)<<"Name" << setw(15)<<"Grade" << setw(13)<<"Remark";
+	
+	for(int i=0; i<5; i++){
+		fgrade=0;
+		
+		for(j=0;j<3;j++){
+			fgrade+=rec[i].quizzes[j].quiz;
+		}
+		cout<<endl;
+		
+		cout<<setw(5)<< i+1 <<setw(15)<<rec[i].id <<setw(20)<<rec[i].name;
+		cout<<setw(10)<<setprecision(4)<<fgrade/3<<setw(15);
+		
+		if( fgrade/3>=75 ){
+			cout<<"Passed";
+			}
+			else{
+			cout<<"Failed";
+			}
+		}
+		cout<<endl;
+}
+	
 //FUNCTION FOR NEWLINE
 void newLine(){
      char s;
