@@ -1,3 +1,6 @@
+// FLORES, PERLYN JOY M.  		201511778
+// CPEPROG2LA E21
+
 #include<iostream>
 #include<cstring>
 #include <stdio.h>
