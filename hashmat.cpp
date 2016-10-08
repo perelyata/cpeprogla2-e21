@@ -1,49 +1,22 @@
-// FLORES, PERLYN JOY M.  		201511778
-// CPEPROG2LA E21
-#include <iostream>
-#include <cmath>
-#include <stdlib.h>
+#include<iostream>
+#include<cmath>
 using namespace std;
 
-int main(){
+int main()
+
+{
+	int armyDifference[3],i,armyA,armyB;
 	
-	int hashmatArmy;
-	int opponentArmy;
-	int difference[3],i;
-	char cont;
-	
-	do{
-		system ("cls");
-		cout << "Enter Armies: [Hashmat's Armies vs Opponent's Armies]" << endl;
-			for(i=0;i<3;i++)
+	cout << "[Hashmat's Armies vs Opponent's Armies]" << endl;
+
+	for(i=0;i<3;i++)
 	{
-		
-		cin>> hashmatArmy>> opponentArmy;
-		
-		if ( hashmatArmy <0 || opponentArmy<0){
-			cout << "\n     Invalid Input. No negative input. \n";
-			return 0;
-		}
-		
-		else if (hashmatArmy > opponentArmy){
-			cout << "\n     Invalid Input. Hashmat Army will never be greater than the Opponent's Army\n";
-			return 0;
-		}
-		
-		else {
-					difference[i]=(opponentArmy-hashmatArmy);
-		}		
-}
-				cout<<endl<<difference[0]<<endl<<difference[1]<<endl<<difference[2]<<endl;
-				
-		
-			
-		cout << "\n\nDo you want to try again? (y/n): ";
-		cin >> cont;	
-	}while(cont == 'y' || cont == 'Y');
+		cin>>armyA>>armyB;
+		armyDifference[i]=abs(armyA-armyB);
+	}
 	
-	
-	system ("pause");
+	cout << endl << endl <<"Differences: ";
+	cout << endl << armyDifference[0] << endl << armyDifference[1] << endl << armyDifference[2] <<endl;
+	system ("pause > 0");
+	return 0;
 }
-
-
